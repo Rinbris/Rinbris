@@ -1,0 +1,44 @@
+## Interface: 90207
+## Title: |cffff7d00Rinbris|r
+## Notes: Personnal Addon
+## Author: Rinbris
+## Version: 0.0.1
+## SavedVariables: RinbrisDB, RinbrisDBPrivateDB
+## SavedVariablesPerCharacter: RinbrisCharacterDB
+
+Libraries\TaintLess\TaintLess.xml
+
+Libraries\Ace3\LibStub\LibStub.lua
+Libraries\Ace3\CallbackHandler-1.0\CallbackHandler-1.0.lua
+Libraries\Ace3\AceAddon-3.0\AceAddon-3.0.xml
+Libraries\Ace3\AceEvent-3.0\AceEvent-3.0.xml
+Libraries\Ace3\AceConsole-3.0\AceConsole-3.0.xml
+Libraries\Ace3\AceDB-3.0\AceDB-3.0.xml
+Libraries\Ace3\AceLocale-3.0\AceLocale-3.0.xml
+
+Libraries\LibDualSpec-1.0\LibDualSpec-1.0.lua
+Libraries\LibSharedMedia-3.0\lib.xml
+
+Init.lua
+
+Locales\enUS.lua
+Locales\frFR.lua
+
+Settings\Profile.lua
+Settings\Global.lua
+Settings\Private.lua
+
+Core\Core.lua
+Core\Commands.lua
+Core\SharedMedia.lua
+
+Modules\Chat\Chat.lua
+
+Modules\Blizzard\Blizzard.lua
+Modules\Blizzard\GameTooltip.lua
+Modules\Blizzard\ObjectiveTracker.lua
+
+Modules\Misc\Misc.lua
+Modules\Misc\AutoRepair.lua
+Modules\Misc\AutoSell.lua
+Modules\Misc\KeepBattlePet.lua
