@@ -4,6 +4,7 @@ P.misc = {
 }
 
 P.blizzard = {
+    ObjectiveTrackerScale = 0.84,
 }
 
 P.chat = {
