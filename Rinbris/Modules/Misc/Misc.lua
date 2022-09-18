@@ -3,7 +3,8 @@ local M = E:GetModule('Misc')
 
 local pairs = pairs
 
-local DisableAddOn, MuteSoundFile = DisableAddOn, MuteSoundFile
+local DisableAddOn = DisableAddOn
+local MuteSoundFile = MuteSoundFile
 
 local blacklistSound = {
     569854, -- sound/vehicles/motorcyclevehicle/motorcyclevehiclewalkrun.ogg
@@ -63,22 +64,6 @@ local blacklistSound = {
     600293 -- sound/creature/goblintrike/veh_goblintrike_drive_loop_01.ogg
 }
 
-local uselessAddon = {
-    'Grid2LDB',
-    'Grid2RaidDebuffs',
-    'Grid2RaidDebuffsOptions',
-    'WeakAurasModelPaths',
-    'WeakAurasTemplates',
-    'Details_EncounterDetails',
-    'Details_Streamer',
-    'Details_TinyThreat',
-    'Details_Vanguard',
-}
-
-function M.DisableUselessAddons()
-    for _, addon in pairs(uselessAddon) do DisableAddOn(addon) end
-end
-
 function M.MuteUselessSound()
     for _, s in pairs(blacklistSound) do MuteSoundFile(s) end
 end
@@ -88,11 +73,10 @@ function M:Initialize()
 
     self.Initialized = true
 
-    M.db = E.db.misc
+    self.db = E.db.misc
 
     UIParent:SetScale(E.global.general.UIScale)
 
-    self.DisableUselessAddons()
     self.MuteUselessSound()
 end
 

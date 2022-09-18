@@ -9,7 +9,9 @@ end
 
 function B.PLAYER_REGEN_DISABLED()
     GameTooltip:SetScript('OnShow',GameTooltip.Hide)
-    if GameTooltip:IsShown() then GameTooltip:Hide() end
+    if GameTooltip:IsShown() then
+        GameTooltip:Hide()
+    end
 end
 
 function B:UpdateGameTooltip()

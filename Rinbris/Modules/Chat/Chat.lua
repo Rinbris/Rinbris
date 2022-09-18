@@ -1,17 +1,17 @@
 local E, L, V, P, G = unpack(Rinbris)
-local C = E:GetModule('Chat')
+local CH = E:GetModule('Chat')
 
 local ChatHide = false
 
-function C:Toggle_OnEnter()
+function CH:Toggle_OnEnter()
     if self:IsMouseOver() then self:SetAlpha(1) end 
 end
 
-function C:Toggle_OnLeave()
+function CH:Toggle_OnLeave()
     if not self:IsMouseOver() then self:SetAlpha(0) end
 end
 
-function C:Toggle_OnMouseUp()
+function CH:Toggle_OnMouseUp()
     if ChatHide  == false then
         self.t:SetTexture('Interface\\CHATFRAME\\UI-ChatIcon-Minimize-Up.blp')
     elseif ChatHide == true then
@@ -19,7 +19,7 @@ function C:Toggle_OnMouseUp()
     end
 end
 
-function C:Toggle_OnMouseDown()
+function CH:Toggle_OnMouseDown()
     if ChatHide == false then
         self.t:SetTexture('Interface\\CHATFRAME\\UI-ChatIcon-Minimize-Down.blp')
     elseif ChatHide == true then
@@ -27,7 +27,7 @@ function C:Toggle_OnMouseDown()
     end
 end
 
-function C:Toggle_OnClick()
+function CH:Toggle_OnClick()
     if ChatHide == false then
         self.t:SetTexture('Interface\\CHATFRAME\\UI-ChatIcon-Maximize-Up.blp')
         QuickJoinToastButton:Hide()
@@ -43,7 +43,6 @@ function C:Toggle_OnClick()
         end
 
         ChatHide = true
-
     elseif ChatHide == true then
         self.t:SetTexture('Interface\\CHATFRAME\\UI-ChatIcon-Minimize-Up.blp')
         QuickJoinToastButton:Show()
@@ -61,7 +60,7 @@ function C:Toggle_OnClick()
     end
 end
 
-function C:BuildToggleButton()
+function CH:BuildToggleButton()
     local Minimize = CreateFrame('Button', nil, UIParent)
     Minimize:SetSize(30,30)
     Minimize.t = Minimize:CreateTexture(nil, 'BORDER')
@@ -70,19 +69,17 @@ function C:BuildToggleButton()
     Minimize:SetPoint('BOTTOM', 'ChatFrame1ButtonFrame', 'BOTTOM', 0, -4)
     Minimize:Show()
     Minimize:SetAlpha(0)    
-	Minimize:HookScript('OnEnter', C.Toggle_OnEnter)
-	Minimize:HookScript('OnLeave', C.Toggle_OnLeave)
-    Minimize:SetScript('onmousedown', C.Toggle_OnMouseUp)
-    Minimize:SetScript('onmousedown', C.Toggle_OnMouseDown)
-    Minimize:SetScript('onclick', C.Toggle_OnClick)
+	Minimize:HookScript('OnEnter', self.Toggle_OnEnter)
+	Minimize:HookScript('OnLeave', self.Toggle_OnLeave)
+    Minimize:SetScript('onmousedown', self.Toggle_OnMouseUp)
+    Minimize:SetScript('onmousedown', self.Toggle_OnMouseDown)
+    Minimize:SetScript('onclick', self.Toggle_OnClick)
 end
 
-function C:Initialize()
+function CH:Initialize()
     if not E.private.chat.enable then return end
 
-    self.Initialized = true
-
-    C.db = E.db.chat
+    self.db = E.db.chat
 
     DEFAULT_CHATFRAME_ALPHA = 0
 
@@ -122,7 +119,9 @@ function C:Initialize()
         end
     end)
 
-    C:BuildToggleButton()
+    self:BuildToggleButton()
+
+    self.Initialized = true
 end
 
-E:RegisterModule(C:GetName())
+E:RegisterModule(CH:GetName())

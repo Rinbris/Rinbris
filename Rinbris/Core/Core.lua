@@ -2,13 +2,15 @@ local Rinbris = select(2, ...)
 Rinbris[2] = Rinbris[1].Libs.ACL:GetLocale('Rinbris', GetLocale())
 local E, L, V, P, G = unpack(Rinbris)
 
+--Locales
+local _G = _G
+
 --Modules
-local Misc = E:GetModule('Misc')
-local LSM = E.Libs.LSM
+-- local Misc = E:GetModule('Misc')
+-- local LSM = E.Libs.LSM
 
 --Constants
-E.noop = function() end
-E.title = format('%s%s|r', '|cff1784d1', 'Rinbris')
+E.title = format('%s%s|r', '|cff00ff00', 'Rinbris')
 E.version = tonumber(GetAddOnMetadata('Rinbris', 'Version'))
 E.toc = tonumber(GetAddOnMetadata('Rinbris', 'X-Interface'))
 E.myfaction, E.myLocalizedFaction = UnitFactionGroup('player')
