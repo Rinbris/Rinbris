@@ -3,6 +3,8 @@ local CH = E:GetModule('Chat')
 
 local ChatHide = false
 
+-- TODO Improve this module
+
 function CH:Toggle_OnEnter()
     if self:IsMouseOver() then self:SetAlpha(1) end 
 end
