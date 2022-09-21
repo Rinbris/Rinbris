@@ -21,12 +21,9 @@ function M:OnLootReady()
     end
 end
 
-function M:OnLootClosed()
-    LootFrame:Close()
-end
-
 function M:LoadLoot()
+    LootFrame:SetAlpha(0)
+
     self:RegisterEvent('LOOT_READY', self.OnLootReady)
     self:RegisterEvent('LOOT_OPENED', self.OnLootReady)
-    self:RegisterEvent('LOOT_CLOSED', self.OnLootClosed)
 end
