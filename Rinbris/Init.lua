@@ -21,7 +21,6 @@ E.AutoRepair = E:NewModule('AutoRepair','AceEvent-3.0')
 E.AutoSell = E:NewModule('AutoSell','AceEvent-3.0')
 E.Blizzard = E:NewModule('Blizzard','AceEvent-3.0')
 E.Chat = E:NewModule('Chat','AceEvent-3.0')
-E.KeepBattlePet = E:NewModule('KeepBattlePet','AceEvent-3.0')
 E.Misc = E:NewModule('Misc','AceEvent-3.0')
 
 do

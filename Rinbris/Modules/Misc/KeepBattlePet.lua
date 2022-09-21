@@ -1,20 +1,17 @@
 local E, L, V, P, G = unpack(Rinbris)
-local KBP = E:GetModule('KeepBattlePet')
+local M = E:GetModule('Misc')
 
-local InCombatLockdown, IsStealthed = InCombatLockdown, IsStealthed
-local C_PetJournal_GetSummonedPetGUID, C_PetJournal_SummonPetByGUID = C_PetJournal.GetSummonedPetGUID, C_PetJournal.SummonPetByGUID
+local InCombatLockdown = InCombatLockdown
+local IsStealthed = IsStealthed
+local C_PetJournal_GetSummonedPetGUID = C_PetJournal.GetSummonedPetGUID
+local C_PetJournal_SummonPetByGUID = C_PetJournal.SummonPetByGUID
 
-function KBP.PLAYER_STARTED_MOVING()
-    if InCombatLockdown('player') or IsStealthed() then return end
-    if C_PetJournal_GetSummonedPetGUID() ~= 'BattlePet-0-00000F8DBF00' then
-        C_PetJournal_SummonPetByGUID('BattlePet-0-00000F8DBF00')
+function M.PLAYER_STARTED_MOVING()
+    if not InCombatLockdown('player') and not IsStealthed() and C_PetJournal_GetSummonedPetGUID() ~= M.db.companion then
+        C_PetJournal_SummonPetByGUID(M.db.companion)
     end
 end
 
-function KBP:Initialize()
-    self.Initialized = true
-
+function M:LoadKeepBattlePet()
     self:RegisterEvent('PLAYER_STARTED_MOVING')
 end
-
-E:RegisterModule(KBP:GetName())

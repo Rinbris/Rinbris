@@ -42,3 +42,4 @@ Modules\Misc\Misc.lua
 Modules\Misc\AutoRepair.lua
 Modules\Misc\AutoSell.lua
 Modules\Misc\KeepBattlePet.lua
+Modules\Misc\Loot.lua

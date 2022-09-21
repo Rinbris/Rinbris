@@ -1,37 +1,46 @@
 local E, L, V, P, G = unpack(Rinbris)
 local CH = E:GetModule('Chat')
 
+local NUM_CHAT_WINDOWS = NUM_CHAT_WINDOWS
+
 local ChatHide = false
 
--- TODO Improve this module
+local textureMinimizeUp = [[Interface\CHATFRAME\UI-ChatIcon-Minimize-Up.blp]]
+local textureMaximizeUp = [[Interface\CHATFRAME\UI-ChatIcon-Maximize-Up.blp]]
+local textureMinimizeDown = [[Interface\CHATFRAME\UI-ChatIcon-Minimize-Down.blp]]
+local textureMaximizeDown = [[Interface\CHATFRAME\UI-ChatIcon-Maximize-Down.blp]]
 
-function CH:Toggle_OnEnter()
-    if self:IsMouseOver() then self:SetAlpha(1) end 
+function CH:AlphaOnEnter()
+    if self:IsMouseOver() then
+        self:SetAlpha(1)
+    end 
 end
 
-function CH:Toggle_OnLeave()
-    if not self:IsMouseOver() then self:SetAlpha(0) end
+function CH:AlphaOnLeave()
+    if not self:IsMouseOver() then
+        self:SetAlpha(0)
+    end
 end
 
 function CH:Toggle_OnMouseUp()
     if ChatHide  == false then
-        self.t:SetTexture('Interface\\CHATFRAME\\UI-ChatIcon-Minimize-Up.blp')
+        self.t:SetTexture(textureMinimizeUp)
     elseif ChatHide == true then
-        self.t:SetTexture('Interface\\CHATFRAME\\UI-ChatIcon-Maximize-Up.blp')
+        self.t:SetTexture(textureMaximizeUp)
     end
 end
 
 function CH:Toggle_OnMouseDown()
     if ChatHide == false then
-        self.t:SetTexture('Interface\\CHATFRAME\\UI-ChatIcon-Minimize-Down.blp')
+        self.t:SetTexture(textureMinimizeDown)
     elseif ChatHide == true then
-        self.t:SetTexture('Interface\\CHATFRAME\\UI-ChatIcon-Maximize-Down.blp')
+        self.t:SetTexture(textureMaximizeDown)
     end
 end
 
-function CH:Toggle_OnClick()
+function CH:HideChat_OnClick()
     if ChatHide == false then
-        self.t:SetTexture('Interface\\CHATFRAME\\UI-ChatIcon-Maximize-Up.blp')
+        self.t:SetTexture(textureMaximizeUp)
         QuickJoinToastButton:Hide()
         GeneralDockManager:Hide()
         ChatFrame1.FontStringContainer:Hide()
@@ -46,7 +55,7 @@ function CH:Toggle_OnClick()
 
         ChatHide = true
     elseif ChatHide == true then
-        self.t:SetTexture('Interface\\CHATFRAME\\UI-ChatIcon-Minimize-Up.blp')
+        self.t:SetTexture(textureMinimizeUp)
         QuickJoinToastButton:Show()
         GeneralDockManager:Show()
         ChatFrame1:Show()
@@ -66,20 +75,22 @@ function CH:BuildToggleButton()
     local Minimize = CreateFrame('Button', nil, UIParent)
     Minimize:SetSize(30,30)
     Minimize.t = Minimize:CreateTexture(nil, 'BORDER')
-    Minimize.t:SetTexture('Interface\\CHATFRAME\\UI-ChatIcon-Minimize-Up.blp')
+    Minimize.t:SetTexture(textureMinimizeUp)
     Minimize.t:SetAllPoints(Minimize)
     Minimize:SetPoint('BOTTOM', 'ChatFrame1ButtonFrame', 'BOTTOM', 0, -4)
     Minimize:Show()
     Minimize:SetAlpha(0)    
-	Minimize:HookScript('OnEnter', self.Toggle_OnEnter)
-	Minimize:HookScript('OnLeave', self.Toggle_OnLeave)
+	Minimize:HookScript('OnEnter', self.AlphaOnEnter)
+	Minimize:HookScript('OnLeave', self.AlphaOnLeave)
     Minimize:SetScript('onmousedown', self.Toggle_OnMouseUp)
     Minimize:SetScript('onmousedown', self.Toggle_OnMouseDown)
-    Minimize:SetScript('onclick', self.Toggle_OnClick)
+    Minimize:SetScript('onclick', self.HideChat_OnClick)
 end
 
 function CH:Initialize()
-    if not E.private.chat.enable then return end
+    if not E.private.chat.enable then
+        return
+    end
 
     self.db = E.db.chat
 

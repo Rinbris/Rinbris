@@ -1,7 +1,9 @@
 local E, L, V, P, G = unpack(Rinbris)
 local AS = E:GetModule('AutoSell')
 
-local GetContainerNumSlots, GetContainerItemInfo, UseContainerItem = GetContainerNumSlots, GetContainerItemInfo, UseContainerItem
+local GetContainerNumSlots = GetContainerNumSlots
+local GetContainerItemInfo = GetContainerItemInfo
+local UseContainerItem = UseContainerItem
 
 function AS.MERCHANT_SHOW()
     local icon, quality
@@ -16,9 +18,13 @@ function AS.MERCHANT_SHOW()
 end
 
 function AS:Initialize()
-    self.Initialized = true
+    if not E.private.misc.enable then
+        return
+    end
 
     self:RegisterEvent('MERCHANT_SHOW')
+
+    self.Initialized = true
 end
 
 E:RegisterModule(AS:GetName())

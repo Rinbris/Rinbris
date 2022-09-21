@@ -65,19 +65,26 @@ local blacklistSound = {
 }
 
 function M.MuteUselessSound()
-    for _, s in pairs(blacklistSound) do MuteSoundFile(s) end
+    for _, s in pairs(blacklistSound) do
+        MuteSoundFile(s)
+    end
 end
 
 function M:Initialize()
-    if not E.private.misc.enable then return end
-
-    self.Initialized = true
+    if not E.private.misc.enable then
+        return
+    end
 
     self.db = E.db.misc
 
     UIParent:SetScale(E.global.general.UIScale)
 
     self.MuteUselessSound()
+    self:LoadAutoRepair()
+    self:LoadKeepBattlePet()
+    self:LoadLoot()
+
+    self.Initialized = true
 end
 
 E:RegisterModule(M:GetName())
