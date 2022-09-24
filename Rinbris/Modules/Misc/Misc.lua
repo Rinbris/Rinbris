@@ -82,6 +82,7 @@ function M:Initialize()
     UIParent:SetScale(E.global.general.UIScale)
 
     self.MuteUselessSound()
+    self:LoadAutoRelease()
     self:LoadAutoRepair()
     self:LoadKeepBattlePet()
     self:LoadLoot()
