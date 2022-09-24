@@ -1,7 +1,7 @@
 local E = unpack(Rinbris)
 local CH = E:GetModule('Chat')
 
--- WoW APIs
+-- WoW Globals
 local NUM_CHAT_WINDOWS = NUM_CHAT_WINDOWS
 
 local ChatHide = false
