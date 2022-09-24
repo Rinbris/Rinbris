@@ -1,4 +1,4 @@
-local E, L, V, P, G = unpack(Rinbris)
+local E = unpack(Rinbris)
 local M = E:GetModule('Misc')
 
 -- Blizzard Globals

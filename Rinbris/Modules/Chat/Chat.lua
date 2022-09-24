@@ -8,16 +8,14 @@ local ChatHide = false
 
 local textureMinimizeUp = [[Interface\CHATFRAME\UI-ChatIcon-Minimize-Up.blp]]
 local textureMaximizeUp = [[Interface\CHATFRAME\UI-ChatIcon-Maximize-Up.blp]]
-local textureMinimizeDown = [[Interface\CHATFRAME\UI-ChatIcon-Minimize-Down.blp]]
-local textureMaximizeDown = [[Interface\CHATFRAME\UI-ChatIcon-Maximize-Down.blp]]
 
-function CH:AlphaOnEnter()
+function CH:Alpha_OnEnter()
     if self:IsMouseOver() then
         self:SetAlpha(1)
     end 
 end
 
-function CH:AlphaOnLeave()
+function CH:Alpha_OnLeave()
     if not self:IsMouseOver() then
         self:SetAlpha(0)
     end
@@ -33,9 +31,9 @@ end
 
 function CH:Toggle_OnMouseDown()
     if ChatHide == false then
-        self.t:SetTexture(textureMinimizeDown)
+        self.t:SetTexture([[Interface\CHATFRAME\UI-ChatIcon-Minimize-Down.blp]])
     elseif ChatHide == true then
-        self.t:SetTexture(textureMaximizeDown)
+        self.t:SetTexture([[Interface\CHATFRAME\UI-ChatIcon-Maximize-Down.blp]])
     end
 end
 
@@ -81,24 +79,14 @@ function CH:BuildToggleButton()
     Minimize:SetPoint('BOTTOM', 'ChatFrame1ButtonFrame', 'BOTTOM', 0, -4)
     Minimize:Show()
     Minimize:SetAlpha(0)    
-	Minimize:HookScript('OnEnter', self.AlphaOnEnter)
-	Minimize:HookScript('OnLeave', self.AlphaOnLeave)
+	Minimize:HookScript('OnEnter', self.Alpha_OnEnter)
+	Minimize:HookScript('OnLeave', self.Alpha_OnLeave)
     Minimize:SetScript('onmousedown', self.Toggle_OnMouseUp)
     Minimize:SetScript('onmousedown', self.Toggle_OnMouseDown)
     Minimize:SetScript('onclick', self.HideChat_OnClick)
 end
 
-function CH:Initialize()
-    if not E.private.chat.enable then
-        return
-    end
-
-    self.db = E.db.chat
-
-    DEFAULT_CHATFRAME_ALPHA = 0
-
-    ChatFrameMenuButton:Hide()
-
+function CH:UpdatingChatFrame()
     ChatFrame1:ClearAllPoints()
     ChatFrame1:SetPoint('BOTTOMLEFT', UIParent, 'BOTTOMLEFT', 31, 0)
 
@@ -116,6 +104,8 @@ function CH:Initialize()
         end
     end
 
+    ChatFrameMenuButton:Hide()
+
     hooksecurefunc('FloatingChatFrame_UpdateBackgroundAnchors', function(self)
         self:SetClampRectInsets(0, 0, 0, 0)
     end)
@@ -132,7 +122,18 @@ function CH:Initialize()
             end)
         end
     end)
+end
 
+function CH:Initialize()
+    if not E.private.chat.enable then
+        return
+    end
+
+    self.db = E.db.chat
+
+    DEFAULT_CHATFRAME_ALPHA = 0
+
+    self:UpdatingChatFrame()
     self:BuildToggleButton()
 
     self.Initialized = true
