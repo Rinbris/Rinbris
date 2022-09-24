@@ -60,9 +60,17 @@ end
 
 function E:CallLoadedModule(obj, silent, object, index)
 	local name, func
-	if type(obj) == 'table' then name, func = unpack(obj) else name = obj end
+	if type(obj) == 'table' then
+		name, func = unpack(obj)
+	else
+		name = obj
+	end
+
 	local module = name and E:GetModule(name, silent)
-	if not module then return end
+
+	if not module then
+		return
+	end
 	
 	if func and type(func) == 'string' then
 		E:CallLoadFunc(module[func], module)
@@ -72,7 +80,9 @@ function E:CallLoadedModule(obj, silent, object, index)
 		E:CallLoadFunc(module.Initialize, module)
 	end
 
-	if object and index then object[index] = nil end
+	if object and index then
+		object[index] = nil
+	end
 end
 
 function E:RegisterModule(name, func)

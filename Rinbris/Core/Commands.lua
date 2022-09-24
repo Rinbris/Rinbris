@@ -19,23 +19,28 @@ end
 
 function E:GetPetGUID()
     local summonedPetGUID = C_PetJournalGetSummonedPetGUID()
-    if summonedPetGUID then self.Print(summonedPetGUID) end
+    if summonedPetGUID then
+        self.Print(summonedPetGUID)
+    end
 end
 
 function E:ChatCommand_GetMountID(spellID)
-    if spellID == nil then return end
+    if spellID == nil then
+        return
+    end
+
     local mountIDs = C_MountJournalGetMountIDs
     for _, mountID in pairs(mountIDs) do
         local mountName, mountSpellID = C_MountJournalGetMountInfoByID(mountID)
 
-        if mountSpellID == tonumber(spellID) then self.Print(strjoin(' ', mountName, mountID)) end
+        if mountSpellID == tonumber(spellID) then
+            self.Print(strjoin(' ', mountName, mountID))
+        end
     end
 end
 
-function E.GetZoneID() return C_MapGetBestMapForUnit('player') end
-
 function E:ChatCommand_ShowZoneID()
-    local id = self.GetZoneID()
+    local id = C_MapGetBestMapForUnit('player')
     self.Print(strjoin(' - ', id, C_MapGetMapInfo(id).name))
 end
 
