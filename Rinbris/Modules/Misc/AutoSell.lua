@@ -29,7 +29,6 @@ function AS.MERCHANT_SHOW()
                     UseContainerItem(bagID, slot)
                 elseif quality == 1 and isBound then
                     local itemType = select(12, GetItemInfo(itemID))
-                    E.Print(itemType)
                     if itemType == 2 or itemType == 4 then -- 2 = Weapon; 4 = Armor
                         UseContainerItem(bagID, slot)
                     end
