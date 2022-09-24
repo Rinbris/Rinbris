@@ -2,8 +2,18 @@ local Rinbris = select(2, ...)
 Rinbris[2] = Rinbris[1].Libs.ACL:GetLocale('Rinbris', GetLocale())
 local E, L, V, P, G = unpack(Rinbris)
 
+-- Lua APIs
+local strsplit, strjoin = strsplit, strjoin
+local ipairs, pairs = ipairs, pairs
+local tonumber = tonumber
+local format = format
+local xpcall = xpcall
+local type = type
+local wipe = wipe
+
 -- Blizzard Globals
 local _G = _G
+local UnitGUID = UnitGUID
 
 --Constants
 E.title = format('%s%s|r', '|cff00ff00', 'Rinbris')
