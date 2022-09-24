@@ -31,7 +31,9 @@ do
     E.Libs = {}
     E.LibsMinor = {}
 	function E:AddLib(name, major, minor)
-		if not name then return end
+		if not name then
+            return
+        end
 
 		if type(major) == 'table' and type(minor) == 'number' then
 			E.Libs[name], E.LibsMinor[name] = major, minor
@@ -80,17 +82,22 @@ function E:OnInitialize()
 end
 
 function E:OnProfileChanged(event)
-    if event == 'OnProfileChanged' then self:UpdateDB() end
+    if event == 'OnProfileChanged' then
+        self:UpdateDB()
+    end
 end
 
 function E:OnProfileReset(event)
-    if event == 'OnProfileReset' then end
+    if event == 'OnProfileReset' then
+    end
 end
 
 function E:OnProfileCopied(event)
-    if event == 'OnProfileCopied' then end
+    if event == 'OnProfileCopied' then
+    end
 end
 
 function E:OnPrivateProfileReset()
-    if event == 'OnProfileReset' then end
+    if event == 'OnProfileReset' then
+    end
 end

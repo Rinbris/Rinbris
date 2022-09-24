@@ -1,6 +1,6 @@
 local Rinbris = select(2, ...)
 Rinbris[2] = Rinbris[1].Libs.ACL:GetLocale('Rinbris', GetLocale())
-local E, L, V, P, G = unpack(Rinbris)
+local E = unpack(Rinbris)
 
 -- Lua APIs
 local strsplit, strjoin = strsplit, strjoin

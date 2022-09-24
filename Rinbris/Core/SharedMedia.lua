@@ -1,4 +1,4 @@
-local E, L, V, P, G = unpack(select(2, ...))
+local E = unpack(select(2, ...))
 local LSM = E.Libs.LSM
 
 local mediaPath = {
