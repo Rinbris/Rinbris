@@ -1,9 +1,21 @@
 local E = unpack(select(2, ...))
 
-local pairs, strjoin, tonumber = pairs, strjoin, tonumber
+-- Lua APIs
+local tonumber = tonumber
+local strjoin = strjoin
+local pairs = pairs
 
-local C_PetJournalGetSummonedPetGUID, C_MountJournalGetMountIDs, C_MountJournalGetMountInfoByID = C_PetJournal.GetSummonedPetGUID, C_MountJournal.GetMountIDs, C_MountJournal.GetMountInfoByID
-local C_MapGetMapInfo, C_MapGetBestMapForUnit = C_Map.GetMapInfo, C_Map.GetBestMapForUnit
+-- Blizzard Globals
+local C_PetJournalGetSummonedPetGUID = C_PetJournal.GetSummonedPetGUID
+local C_MountJournalGetMountInfoByID = C_MountJournal.GetMountInfoByID
+local C_MountJournalGetMountIDs = C_MountJournal.GetMountIDs
+
+local C_MapGetBestMapForUnit = C_Map.GetBestMapForUnit
+local C_MapGetMapInfo = C_Map.GetMapInfo
+
+function E:SetPetGUID(guid)
+    E.db.misc.companion = guid
+end
 
 function E:GetPetGUID()
     local summonedPetGUID = C_PetJournalGetSummonedPetGUID()
@@ -28,6 +40,7 @@ function E:ChatCommand_ShowZoneID()
 end
 
 function E:LoadCommands()
+    self:RegisterChatCommand('setpetguid', 'SetPetGUID')
     self:RegisterChatCommand('petguid', 'GetPetGUID')
     self:RegisterChatCommand('mountid', 'GetMountID')
     self:RegisterChatCommand('zoneid', 'ChatCommand_ShowZoneID')

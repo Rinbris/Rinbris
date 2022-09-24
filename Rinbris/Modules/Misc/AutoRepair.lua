@@ -1,8 +1,10 @@
 local E, L, V, P, G = unpack(Rinbris)
 local M = E:GetModule('Misc')
 
+-- Lua APIs
 local select = select
 
+-- Blizzard Globals
 local IsShiftKeyDown = IsShiftKeyDown
 local CanMerchantRepair = CanMerchantRepair
 local GetRepairAllCost = GetRepairAllCost

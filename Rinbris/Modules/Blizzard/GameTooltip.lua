@@ -1,6 +1,7 @@
 local E, L, V, P, G = unpack(Rinbris)
 local B = E:GetModule('Blizzard')
 
+-- Blizzard Globals
 local hooksecurefunc = hooksecurefunc
 
 function B.PLAYER_REGEN_ENABLED()

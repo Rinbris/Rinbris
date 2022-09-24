@@ -1,10 +1,12 @@
 local E, L, V, P, G = unpack(Rinbris)
 local M = E:GetModule('Misc')
 
+-- Lua APIs
 local pairs = pairs
 
-local DisableAddOn = DisableAddOn
+-- Blizzard Globals
 local MuteSoundFile = MuteSoundFile
+local DisableAddOn = DisableAddOn
 
 local blacklistSound = {
     569854, -- sound/vehicles/motorcyclevehicle/motorcyclevehiclewalkrun.ogg

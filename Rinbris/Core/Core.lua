@@ -2,12 +2,8 @@ local Rinbris = select(2, ...)
 Rinbris[2] = Rinbris[1].Libs.ACL:GetLocale('Rinbris', GetLocale())
 local E, L, V, P, G = unpack(Rinbris)
 
---Locales
+-- Blizzard Globals
 local _G = _G
-
---Modules
--- local Misc = E:GetModule('Misc')
--- local LSM = E.Libs.LSM
 
 --Constants
 E.title = format('%s%s|r', '|cff00ff00', 'Rinbris')

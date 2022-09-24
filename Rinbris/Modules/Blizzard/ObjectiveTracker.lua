@@ -1,16 +1,21 @@
 local E = unpack(Rinbris)
 local B = E:GetModule('Blizzard')
 
+-- Lua APIs
 local select = select
 
+-- Blizzard Globals
 local IsInInstance = IsInInstance
 
 local C_Timer_After = C_Timer.After
 
+local C_QuestLog_RemoveQuestWatch = C_QuestLog.RemoveQuestWatch
+local C_QuestLog_IsComplete = C_QuestLog.IsComplete
+
 local ObjectiveTracker_Collapse = ObjectiveTracker_Collapse
 local ObjectiveTracker_Expand = ObjectiveTracker_Expand
-local C_QuestLog_IsComplete = C_QuestLog.IsComplete
-local C_QuestLog_RemoveQuestWatch = C_QuestLog.RemoveQuestWatch
+
+
 
 function B.QUEST_WATCH_UPDATE(_, _, questID)
     C_Timer_After(0.5, function()
