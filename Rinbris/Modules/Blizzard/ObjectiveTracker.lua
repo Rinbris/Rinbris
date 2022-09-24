@@ -4,7 +4,7 @@ local B = E:GetModule('Blizzard')
 -- Lua APIs
 local select = select
 
--- Blizzard Globals
+-- WoW APIs
 local IsInInstance = IsInInstance
 
 local C_Timer_After = C_Timer.After

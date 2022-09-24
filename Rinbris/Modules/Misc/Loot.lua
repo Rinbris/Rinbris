@@ -4,7 +4,7 @@ local M = E:GetModule('Misc')
 -- Lua APIs
 local select = select 
 
--- Blizzard Globals
+-- WoW APIs
 local GetNumLootItems = GetNumLootItems
 local GetLootSlotInfo = GetLootSlotInfo
 

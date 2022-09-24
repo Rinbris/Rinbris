@@ -4,7 +4,7 @@ local AS = E:GetModule('AutoSell')
 -- Lua APIs
 local select = select
 
--- Blizzard Globals
+-- WoW APIs
 local GetContainerNumSlots = GetContainerNumSlots
 local GetContainerItemInfo = GetContainerItemInfo
 local GetItemInfo = GetItemInfo

@@ -11,7 +11,7 @@ local xpcall = xpcall
 local type = type
 local wipe = wipe
 
--- Blizzard Globals
+-- WoW APIs
 local _G = _G
 local UnitGUID = UnitGUID
 

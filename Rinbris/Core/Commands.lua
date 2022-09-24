@@ -5,7 +5,7 @@ local tonumber = tonumber
 local strjoin = strjoin
 local pairs = pairs
 
--- Blizzard Globals
+-- WoW APIs
 local C_PetJournalGetSummonedPetGUID = C_PetJournal.GetSummonedPetGUID
 local C_MountJournalGetMountInfoByID = C_MountJournal.GetMountInfoByID
 local C_MountJournalGetMountIDs = C_MountJournal.GetMountIDs

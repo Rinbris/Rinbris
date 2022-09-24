@@ -4,7 +4,7 @@ local M = E:GetModule('Misc')
 -- Lua APIs
 local pairs = pairs
 
--- Blizzard Globals
+-- WoW APIs
 local MuteSoundFile = MuteSoundFile
 local DisableAddOn = DisableAddOn
 

@@ -1,7 +1,7 @@
 -- Lua APIs
 local type = type 
 
--- Blizzard Globals
+-- WoW APIs
 local _G = _G
 
 _G.BINDING_HEADER_RINBRIS = GetAddOnMetadata(..., 'Title')

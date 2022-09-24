@@ -4,7 +4,7 @@ local M = E:GetModule('Misc')
 -- Lua APIs
 local select = select
 
--- Blizzard Globals
+-- WoW APIs
 local C_PetJournal_GetSummonedPetGUID = C_PetJournal.GetSummonedPetGUID
 local C_PetJournal_SummonPetByGUID = C_PetJournal.SummonPetByGUID
 
