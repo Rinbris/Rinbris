@@ -11,6 +11,10 @@ local GetItemInfo = GetItemInfo
 
 local UseContainerItem = UseContainerItem
 
+local whitelistItem = {
+    -- [55004] = true, -- Wolf Fur Coat
+}
+
 local blacklistItem = {
     -- [55004] = true, -- Wolf Fur Coat
 }
@@ -21,7 +25,7 @@ function AS.MERCHANT_SHOW()
         for slot = 1, GetContainerNumSlots(bagID) do
             icon, _, locked, quality, _, _, _, _, _, itemID, isBound = GetContainerItemInfo(bagID, slot)
             if not blacklistItem[itemID] and not locked and icon then
-                if quality == 0 then
+                elseif quality == 0 or whitelistItem[itemID] then
                     UseContainerItem(bagID, slot)
                 elseif quality == 1 and isBound then
                     local itemType = select(12, GetItemInfo(itemID))
