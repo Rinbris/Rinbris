@@ -9,6 +9,8 @@ local MuteSoundFile = MuteSoundFile
 local DisableAddOn = DisableAddOn
 
 local blacklistSound = {
+    568252, -- sound/spells/summongyrocopter.ogg
+    551383, -- sound/creature/gyrocopter/gyrocopterstand.ogg
     569854, -- sound/vehicles/motorcyclevehicle/motorcyclevehiclewalkrun.ogg
     569858, -- sound/vehicles/motorcyclevehicle/motorcyclevehicleattackthrown.ogg
     569859, -- sound/vehicles/motorcyclevehicle/motorcyclevehiclestand.ogg
@@ -63,7 +65,94 @@ local blacklistSound = {
     600278, -- sound/creature/goblintrike/veh_goblintrike_turn_02.ogg
     600281, -- sound/creature/goblintrike/veh_goblintrike_idle_loop_01.ogg
     600290, -- sound/creature/goblintrike/veh_goblintrike_turn_01.ogg
-    600293 -- sound/creature/goblintrike/veh_goblintrike_drive_loop_01.ogg
+    600293, -- sound/creature/goblintrike/veh_goblintrike_drive_loop_01.ogg
+    550821, -- sound/creature/goblinshredder/goblinshredderattackc.ogg
+    550822, -- sound/creature/goblinshredder/goblinshredderwoundb.ogg
+    550823, -- sound/creature/goblinshredder/goblinshredderaggro.ogg
+    550824, -- sound/creature/goblinshredder/goblinshredderloop.ogg
+    550825, -- sound/creature/goblinshredder/goblinshredderwoundcrit.ogg
+    550826, -- sound/creature/goblinshredder/goblinshredderattackb.ogg
+    550827, -- sound/creature/goblinshredder/goblinshredderattacka.ogg
+    550828, -- sound/creature/goblinshredder/goblinshredderwoundc.ogg
+    550829, -- sound/creature/goblinshredder/goblinshredderdeatha.ogg
+    550830, -- sound/creature/goblinshredder/goblinshredderwounda.ogg
+    550831, -- sound/creature/goblinshredder/goblinshredderpreaggro.ogg
+    893935, -- sound/creature/goblinshredder/footstep_goblinshreddermount_general_01.ogg
+    893937, -- sound/creature/goblinshredder/footstep_goblinshreddermount_general_02.ogg
+    893939, -- sound/creature/goblinshredder/footstep_goblinshreddermount_general_03.ogg
+    893941, -- sound/creature/goblinshredder/footstep_goblinshreddermount_general_04.ogg
+    893943, -- sound/creature/goblinshredder/footstep_goblinshreddermount_general_05.ogg
+    893945, -- sound/creature/goblinshredder/footstep_goblinshreddermount_general_06.ogg
+    893947, -- sound/creature/goblinshredder/footstep_goblinshreddermount_general_07.ogg
+    893949, -- sound/creature/goblinshredder/footstep_goblinshreddermount_general_08.ogg
+    898320, -- sound/creature/goblinshredder/mon_goblinshredder_mount_flightbackward_lp.ogg
+    898322, -- sound/creature/goblinshredder/mon_goblinshredder_mount_flightidle_lp.ogg
+    898324, -- sound/creature/goblinshredder/mon_goblinshredder_mount_flightleftright_lp.ogg
+    898326, -- sound/creature/goblinshredder/mon_goblinshredder_mount_flightrun_lp.ogg
+    898328, -- sound/creature/goblinshredder/mon_goblinshredder_mount_idlestand_lp.ogg
+    898330, -- sound/creature/goblinshredder/mon_goblinshredder_mount_swim_lp.ogg
+    898428, -- sound/creature/goblinshredder/mon_goblinshredder_mount_flightstart_01.ogg
+    898430, -- sound/creature/goblinshredder/mon_goblinshredder_mount_flightstart_02.ogg
+    898432, -- sound/creature/goblinshredder/mon_goblinshredder_mount_flightstart_03.ogg
+    898434, -- sound/creature/goblinshredder/mon_goblinshredder_mount_flightstart_04.ogg
+    898436, -- sound/creature/goblinshredder/mon_goblinshredder_mount_flightstart_05.ogg
+    898438, -- sound/creature/goblinshredder/mon_goblinshredder_mount_special_01.ogg
+    898440, -- sound/creature/goblinshredder/mon_goblinshredder_mount_special_02.ogg
+    898442, -- sound/creature/goblinshredder/mon_goblinshredder_mount_special_03.ogg
+    898444, -- sound/creature/goblinshredder/mon_goblinshredder_mount_special_04.ogg
+    898446, -- sound/creature/goblinshredder/mon_goblinshredder_mount_special_05.ogg
+    899109, -- sound/creature/goblinshredder/mon_goblinshredder_mount_gears_01.ogg
+    899111, -- sound/creature/goblinshredder/mon_goblinshredder_mount_gears_010.ogg
+    899113, -- sound/creature/goblinshredder/mon_goblinshredder_mount_gears_02.ogg
+    899115, -- sound/creature/goblinshredder/mon_goblinshredder_mount_gears_03.ogg
+    899117, -- sound/creature/goblinshredder/mon_goblinshredder_mount_gears_04.ogg
+    899119, -- sound/creature/goblinshredder/mon_goblinshredder_mount_gears_05.ogg
+    899121, -- sound/creature/goblinshredder/mon_goblinshredder_mount_gears_06.ogg
+    899123, -- sound/creature/goblinshredder/mon_goblinshredder_mount_gears_07.ogg
+    899125, -- sound/creature/goblinshredder/mon_goblinshredder_mount_gears_08.ogg
+    899127, -- sound/creature/goblinshredder/mon_goblinshredder_mount_gears_09.ogg
+    899129, -- sound/creature/goblinshredder/mon_goblinshredder_mount_land_01.ogg
+    899131, -- sound/creature/goblinshredder/mon_goblinshredder_mount_land_02.ogg
+    899133, -- sound/creature/goblinshredder/mon_goblinshredder_mount_land_03.ogg
+    899135, -- sound/creature/goblinshredder/mon_goblinshredder_mount_land_04.ogg
+    899137, -- sound/creature/goblinshredder/mon_goblinshredder_mount_land_05.ogg
+    899139, -- sound/creature/goblinshredder/mon_goblinshredder_mount_takeflightgearshift_01.ogg
+    899141, -- sound/creature/goblinshredder/mon_goblinshredder_mount_takeflightgearshift_02.ogg
+    899143, -- sound/creature/goblinshredder/mon_goblinshredder_mount_takeflightgearshift_03.ogg
+    899145, -- sound/creature/goblinshredder/mon_goblinshredder_mount_takeflightgearshift_04.ogg
+    899147, -- sound/creature/goblinshredder/mon_goblinshredder_mount_takeflightgearshift_05.ogg
+    899149, -- sound/creature/goblinshredder/mon_goblinshredder_mount_takeflightgearshift_06.ogg
+    899247, -- sound/creature/goblinshredder/mon_goblinshredder_mount_flightend.ogg
+    901303, -- sound/creature/goblinshredder/mon_goblinshredder_mount_swimwaterlayer_lp.ogg
+    903314, -- sound/creature/goblinshredder/mon_goblinshredder_mount_takeflightgearshiftnoboom_01.ogg
+    903316, -- sound/creature/goblinshredder/mon_goblinshredder_mount_takeflightgearshiftnoboom_02.ogg
+    903318, -- sound/creature/goblinshredder/mon_goblinshredder_mount_takeflightgearshiftnoboom_03.ogg
+    903320, -- sound/creature/goblinshredder/mon_goblinshredder_mount_takeflightgearshiftnoboom_04.ogg
+    903322, -- sound/creature/goblinshredder/mon_goblinshredder_mount_takeflightgearshiftnoboom_05.ogg
+    903324, -- sound/creature/goblinshredder/mon_goblinshredder_mount_takeflightgearshiftnoboom_06.ogg
+    1049453, -- sound/creature/goblinshredderpet/pet_goblinshredder_death_01.ogg
+    1049454, -- sound/creature/goblinshredderpet/pet_goblinshredder_death_02.ogg
+    1049455, -- sound/creature/goblinshredderpet/pet_goblinshredder_death_03.ogg
+    1049456, -- sound/creature/goblinshredderpet/pet_goblinshredder_death_04.ogg
+    1049457, -- sound/creature/goblinshredderpet/pet_goblinshredder_death_05.ogg
+    1049458, -- sound/creature/goblinshredderpet/pet_goblinshredder_stand1_01.ogg
+    1049459, -- sound/creature/goblinshredderpet/pet_goblinshredder_stand1_02.ogg
+    1049460, -- sound/creature/goblinshredderpet/pet_goblinshredder_stand1_03.ogg
+    1049461, -- sound/creature/goblinshredderpet/pet_goblinshredder_wound_01.ogg
+    1049462, -- sound/creature/goblinshredderpet/pet_goblinshredder_wound_02.ogg
+    1049463, -- sound/creature/goblinshredderpet/pet_goblinshredder_wound_03.ogg
+    1049464, -- sound/creature/goblinshredderpet/pet_goblinshredder_wound_04.ogg
+    1049465, -- sound/creature/goblinshredderpet/pet_goblinshredder_wound_05.ogg
+    1049466, -- sound/creature/goblinshredderpet/pet_goblinshredder_wound_06.ogg
+    1049467, -- sound/creature/goblinshredderpet/pet_goblinshredder_wound_07.ogg
+    1049468, -- sound/creature/goblinshredderpet/pet_goblinshredder_clickables_01.ogg
+    1049469, -- sound/creature/goblinshredderpet/pet_goblinshredder_clickables_02.ogg
+    1049470, -- sound/creature/goblinshredderpet/pet_goblinshredder_clickables_03.ogg
+    1049471, -- sound/creature/goblinshredderpet/pet_goblinshredder_clickables_04.ogg
+    1049472, -- sound/creature/goblinshredderpet/pet_goblinshredder_clickables_05.ogg
+    1049473, -- sound/creature/goblinshredderpet/pet_goblinshredder_clickables_06.ogg
+    1049474, -- sound/creature/goblinshredderpet/pet_goblinshredder_clickables_07.ogg
+    1049475, -- sound/creature/goblinshredderpet/pet_goblinshredder_clickables_08.ogg
 }
 
 function M.MuteUselessSound()
