@@ -23,8 +23,8 @@ function B:UpdateGameTooltip()
 
             if a ~= 'BOTTOMRIGHT' or c ~= 'BOTTOMRIGHT' then
                 tooltip:ClearAllPoints()
-                tooltip:SetPoint('BOTTOMRIGHT', UIParent, 'BOTTOMRIGHT', 0, 0)
             end
+            tooltip:SetPoint('BOTTOMRIGHT', UIParent, 'BOTTOMRIGHT', 0, 0)
         end
     end)
 
