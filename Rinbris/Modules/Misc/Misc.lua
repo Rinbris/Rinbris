@@ -9,6 +9,9 @@ local MuteSoundFile = MuteSoundFile
 local DisableAddOn = DisableAddOn
 
 local blacklistSound = {
+    25152, -- SPELL_Vine_CreatureLoop
+    7518, -- SPELL_EmoteSpellKneel
+    146217, -- Emitter_83_Visions_Stormwnd_StagingArea_OldGodWind_Loop_01
     568252, -- sound/spells/summongyrocopter.ogg
     551383, -- sound/creature/gyrocopter/gyrocopterstand.ogg
     569854, -- sound/vehicles/motorcyclevehicle/motorcyclevehiclewalkrun.ogg
@@ -161,6 +164,12 @@ function M.MuteUselessSound()
     end
 end
 
+function M.DominosProfile()
+    if Dominos then
+        Dominos:SetProfile('default')
+    end
+end
+
 function M:Initialize()
     if not E.private.misc.enable then
         return
@@ -171,11 +180,12 @@ function M:Initialize()
     UIParent:SetScale(E.global.general.UIScale)
 
     self.MuteUselessSound()
+    self.DominosProfile()
     self:LoadAutoRelease()
     self:LoadAutoRepair()
     self:LoadKeepBattlePet()
     self:LoadLoot()
-
+    
     self.Initialized = true
 end
 
