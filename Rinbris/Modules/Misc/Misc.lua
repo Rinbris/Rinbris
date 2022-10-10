@@ -164,18 +164,6 @@ function M.MuteUselessSound()
     end
 end
 
-function M.DominosProfile()
-    if Dominos then
-        Dominos:SetProfile('default')
-    end
-end
-
-function M.DetailsProfile()
-    if _detalhes then
-        _detalhes:SetProfile('default')
-    end
-end
-
 function M:Initialize()
     if not E.private.misc.enable then
         return
@@ -186,8 +174,6 @@ function M:Initialize()
     UIParent:SetScale(E.global.general.UIScale)
 
     self.MuteUselessSound()
-    self.DominosProfile()
-    self.DetailsProfile()
     self:LoadAutoRelease()
     self:LoadAutoRepair()
     self:LoadKeepBattlePet()

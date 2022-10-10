@@ -11,3 +11,7 @@ P.blizzard = {
 P.chat = {
     
 }
+
+P.profiles = {
+    
+}
