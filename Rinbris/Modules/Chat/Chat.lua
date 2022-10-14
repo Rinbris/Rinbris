@@ -124,6 +124,11 @@ function CH:UpdatingChatFrame()
     end)
 end
 
+function CH.PLAYER_ENTERING_WORLD()
+    CH:UpdatingChatFrame()
+    CH:BuildToggleButton()
+end
+
 function CH:Initialize()
     if not E.private.chat.enable then
         return
@@ -133,8 +138,7 @@ function CH:Initialize()
 
     DEFAULT_CHATFRAME_ALPHA = 0
 
-    self:UpdatingChatFrame()
-    self:BuildToggleButton()
+    self:RegisterEvent('PLAYER_ENTERING_WORLD')
 
     self.Initialized = true
 end
