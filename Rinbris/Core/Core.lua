@@ -8,25 +8,16 @@ local ipairs, pairs = ipairs, pairs
 local tonumber = tonumber
 local format = format
 local xpcall = xpcall
+local select = select
 local type = type
 local wipe = wipe
 
 -- WoW APIs
 local _G = _G
-local UnitGUID = UnitGUID
 
 --Constants
-E.title = format('%s%s|r', '|cff00ff00', 'Rinbris')
-E.version = tonumber(GetAddOnMetadata('Rinbris', 'Version'))
-E.toc = tonumber(GetAddOnMetadata('Rinbris', 'X-Interface'))
-E.myfaction, E.myLocalizedFaction = UnitFactionGroup('player')
-E.mylevel = UnitLevel('player')
-E.myLocalizedClass, E.myclass, E.myClassID = UnitClass('player')
-E.myLocalizedRace, E.myrace = UnitRace('player')
-E.myname = UnitName('player')
-E.myrealm = GetRealmName()
-E.mynameRealm = format('%s - %s', E.myname, E.myrealm)
-E.myspec = GetSpecialization()
+E.myClassID = select(3, UnitClass('player'))
+E.myRealmName = format('%s - %s', UnitName('player'), GetRealmName())
 
 E.RegisteredModules = {}
 
@@ -99,14 +90,9 @@ function E:InitializeModules()
 	end
 end
 
--- function E:DBConversionsDF()
--- end
-
 function E:DBConversions()
     if self.db.dbConverted ~= self.version then
         self.db.dbConverted = self.version
-
-        -- self:DBConversionsDF()
     end
 end
 
@@ -122,11 +108,6 @@ function E:Initialize()
 	wipe(self.db)
 	wipe(self.global)
 	wipe(self.private)
-
-	local playerGUID = UnitGUID('player')
-	local _, serverID = strsplit('-', playerGUID)
-	self.serverID = tonumber(serverID)
-	self.myguid = playerGUID
 
 	self.data = self.Libs.AceDB:New('RinbrisDB', self.DF, true)
 	self.data.RegisterCallback(E, 'OnProfileChanged', 'OnProfileChanged')

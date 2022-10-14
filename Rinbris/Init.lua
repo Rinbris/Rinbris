@@ -68,14 +68,14 @@ function E:OnInitialize()
             self:CopyTable(self.global, RinbrisDB.global)
         end
 
-        local key = RinbrisDB.profileKeys and RinbrisDB.profileKeys[self.myNameRealm]
+        local key = RinbrisDB.profileKeys and RinbrisDB.profileKeys[self.myRealmName]
         if key and RinbrisDB.profiles and RinbrisDB.profiles[key] then
             self:CopyTable(self.db, RinbrisDB.profiles[key])
         end
     end
 
 	if RinbrisPrivateDB then
-		local key = RinbrisPrivateDB.profileKeys and RinbrisPrivateDB.profileKeys[E.mynameRealm]
+		local key = RinbrisPrivateDB.profileKeys and RinbrisPrivateDB.profileKeys[E.myRealmName]
 		if key and RinbrisPrivateDB.profiles and RinbrisPrivateDB.profiles[key] then
 			E:CopyTable(E.private, RinbrisPrivateDB.profiles[key])
 		end
