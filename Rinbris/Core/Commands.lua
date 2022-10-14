@@ -3,24 +3,43 @@ local E = unpack(select(2, ...))
 -- Lua APIs
 local tonumber = tonumber
 local strjoin = strjoin
+local select = select
 local pairs = pairs
 
 -- WoW APIs
 local C_PetJournalGetSummonedPetGUID = C_PetJournal.GetSummonedPetGUID
+local C_PetJournalGetPetInfoByPetID = C_PetJournal.GetPetInfoByPetID
 local C_MountJournalGetMountInfoByID = C_MountJournal.GetMountInfoByID
 local C_MountJournalGetMountIDs = C_MountJournal.GetMountIDs
 
 local C_MapGetBestMapForUnit = C_Map.GetBestMapForUnit
 local C_MapGetMapInfo = C_Map.GetMapInfo
 
-function E:SetPetGUID(guid)
-    E.db.misc.companion = guid
+function E:SetPetID(petID)
+    if petID == nil then
+        return
+    end
+
+    local name = select(8, C_PetJournalGetPetInfoByPetID(petID))
+    if name then
+        RinbrisCharacterDB.battlePet = petID
+        self.Print(name .. ' configured.')
+    end
 end
 
-function E:GetPetGUID()
+function E:GetPetID()
     local summonedPetGUID = C_PetJournalGetSummonedPetGUID()
     if summonedPetGUID then
-        self.Print(summonedPetGUID)
+        self.Print('Current petID is : ' .. summonedPetGUID)
+    end
+end
+
+function E:CheckPetID()
+    local characterBattlePet = RinbrisCharacterDB.battlePet
+    if characterBattlePet then
+        self.Print(select(8, C_PetJournalGetPetInfoByPetID(characterBattlePet)) .. ' configured on a character level.')
+    else 
+        self.Print(select(8, C_PetJournalGetPetInfoByPetID(M.db.companion)) .. ' configured on a profile level.')
     end
 end
 
@@ -45,8 +64,9 @@ function E:ChatCommand_ShowZoneID()
 end
 
 function E:LoadCommands()
-    self:RegisterChatCommand('setpetguid', 'SetPetGUID')
-    self:RegisterChatCommand('petguid', 'GetPetGUID')
-    self:RegisterChatCommand('mountid', 'GetMountID')
-    self:RegisterChatCommand('zoneid', 'ChatCommand_ShowZoneID')
+    self:RegisterChatCommand('rinbrissetpetid', 'SetPetID')
+    self:RegisterChatCommand('rinbrisgetpetid', 'GetPetID')
+    self:RegisterChatCommand('rinbrischeckpetid', 'CheckPetID')
+    self:RegisterChatCommand('rinbrismountid', 'GetMountID')
+    self:RegisterChatCommand('rinbriszoneid', 'ChatCommand_ShowZoneID')
 end
