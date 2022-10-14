@@ -37,6 +37,9 @@ globals = {
     "ChatFrameChannelButton",
     "GeneralDockManager",
 
+    -- FrameXML globals
+    "DEFAULT_CHATFRAME_ALPHA",
+
     -- ENUMS
     "NUM_BAG_SLOTS",
     "NUM_CHAT_WINDOWS",
@@ -77,7 +80,6 @@ globals = {
 
     "ObjectiveTracker_Collapse",
     "ObjectiveTracker_Expand",
-
 
     "ReloadUI",
     "RepairAllItems",
