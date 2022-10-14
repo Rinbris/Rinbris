@@ -22,5 +22,3 @@ end
 function M:LoadKeepBattlePet()
     self:RegisterEvent('PLAYER_STARTED_MOVING')
 end
-
-local instanceType = select(2, IsInInstance())

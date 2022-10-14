@@ -20,10 +20,9 @@ local blacklistItem = {
 }
 
 function AS.MERCHANT_SHOW()
-    local icon, locked, quality, itemID, isBound
     for bagID = 0, NUM_BAG_SLOTS do
         for slot = 1, GetContainerNumSlots(bagID) do
-            icon, _, locked, quality, _, _, _, _, _, itemID, isBound = GetContainerItemInfo(bagID, slot)
+            local icon, _, locked, quality, _, _, _, _, _, itemID, isBound = GetContainerItemInfo(bagID, slot)
             if not blacklistItem[itemID] and not locked and icon then
                 if quality == 0 or whitelistItem[itemID] then
                     UseContainerItem(bagID, slot)
@@ -32,7 +31,7 @@ function AS.MERCHANT_SHOW()
                     if itemType == 2 or itemType == 4 then -- 2 = Weapon; 4 = Armor
                         UseContainerItem(bagID, slot)
                     end
-                end 
+                end
             end
         end
     end

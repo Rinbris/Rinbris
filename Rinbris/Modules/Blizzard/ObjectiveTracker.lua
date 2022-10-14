@@ -15,8 +15,6 @@ local C_QuestLog_IsComplete = C_QuestLog.IsComplete
 local ObjectiveTracker_Collapse = ObjectiveTracker_Collapse
 local ObjectiveTracker_Expand = ObjectiveTracker_Expand
 
-
-
 function B.QUEST_WATCH_UPDATE(_, _, questID)
     C_Timer_After(0.5, function()
         if C_QuestLog_IsComplete(questID) then

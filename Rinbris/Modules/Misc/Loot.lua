@@ -2,7 +2,7 @@ local E = unpack(Rinbris)
 local M = E:GetModule('Misc')
 
 -- Lua APIs
-local select = select 
+local select = select
 
 -- WoW APIs
 local GetNumLootItems = GetNumLootItems
@@ -10,7 +10,7 @@ local GetLootSlotInfo = GetLootSlotInfo
 
 local LootSlot= LootSlot
 
-function M:OnLootReady()
+local function DoLoot()
     local numLootItems  = GetNumLootItems()
     if numLootItems  == 0 then
       return
@@ -24,9 +24,17 @@ function M:OnLootReady()
     end
 end
 
+function M.LOOT_READY()
+    DoLoot()
+end
+
+function M.LOOT_OPENED()
+    DoLoot()
+end
+
 function M:LoadLoot()
     LootFrame:SetAlpha(0)
 
-    self:RegisterEvent('LOOT_READY', self.OnLootReady)
-    self:RegisterEvent('LOOT_OPENED', self.OnLootReady)
+    self:RegisterEvent('LOOT_READY')
+    self:RegisterEvent('LOOT_OPENED')
 end

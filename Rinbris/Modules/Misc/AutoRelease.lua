@@ -10,7 +10,7 @@ local IsInInstance = IsInInstance
 local RepopMe = RepopMe
 
 function M.PLAYER_DEAD()
-    if select(2, IsInInstance()) == 'pvp' then 
+    if select(2, IsInInstance()) == 'pvp' then
         RepopMe()
     end
 end

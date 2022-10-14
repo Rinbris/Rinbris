@@ -6,7 +6,6 @@ local pairs = pairs
 
 -- WoW APIs
 local MuteSoundFile = MuteSoundFile
-local DisableAddOn = DisableAddOn
 
 local blacklistSound = {
     25152, -- SPELL_Vine_CreatureLoop
@@ -178,7 +177,7 @@ function M:Initialize()
     self:LoadAutoRepair()
     self:LoadKeepBattlePet()
     self:LoadLoot()
-    
+
     self.Initialized = true
 end
 

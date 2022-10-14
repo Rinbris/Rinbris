@@ -1,5 +1,5 @@
 -- Lua APIs
-local type = type 
+local type = type
 
 -- WoW APIs
 local _G = _G
@@ -37,9 +37,9 @@ do
         end
 
 		if type(major) == 'table' and type(minor) == 'number' then
-			E.Libs[name], E.LibsMinor[name] = major, minor
+			self.Libs[name], self.LibsMinor[name] = major, minor
 		else
-			E.Libs[name], E.LibsMinor[name] = _G.LibStub(major, minor)
+			self.Libs[name], self.LibsMinor[name] = _G.LibStub(major, minor)
 		end
 	end
 
@@ -90,15 +90,18 @@ end
 
 function E:OnProfileReset(event)
     if event == 'OnProfileReset' then
+        self:UpdateDB()
     end
 end
 
 function E:OnProfileCopied(event)
     if event == 'OnProfileCopied' then
+        self:UpdateDB()
     end
 end
 
-function E:OnPrivateProfileReset()
+function E:OnPrivateProfileReset(event)
     if event == 'OnProfileReset' then
+        self:UpdateDB()
     end
 end

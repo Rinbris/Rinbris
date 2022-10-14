@@ -10,7 +10,7 @@ function B:Initialize()
 
     self:UpdateObjectiveTracker()
     self:UpdateGameTooltip()
-    
+
     self.Initialized = true
 end
 

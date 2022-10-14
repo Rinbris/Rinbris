@@ -12,7 +12,7 @@ local textureMaximizeUp = [[Interface\CHATFRAME\UI-ChatIcon-Maximize-Up.blp]]
 function CH:Alpha_OnEnter()
     if self:IsMouseOver() then
         self:SetAlpha(1)
-    end 
+    end
 end
 
 function CH:Alpha_OnLeave()
@@ -78,7 +78,7 @@ function CH:BuildToggleButton()
     Minimize.t:SetAllPoints(Minimize)
     Minimize:SetPoint('BOTTOM', 'ChatFrame1ButtonFrame', 'BOTTOM', 0, -4)
     Minimize:Show()
-    Minimize:SetAlpha(0)    
+    Minimize:SetAlpha(0)
 	Minimize:HookScript('OnEnter', self.Alpha_OnEnter)
 	Minimize:HookScript('OnLeave', self.Alpha_OnLeave)
     Minimize:SetScript('onmousedown', self.Toggle_OnMouseUp)
@@ -86,7 +86,7 @@ function CH:BuildToggleButton()
     Minimize:SetScript('onclick', self.HideChat_OnClick)
 end
 
-function CH:UpdatingChatFrame()
+function CH.UpdatingChatFrame()
     ChatFrame1:ClearAllPoints()
     ChatFrame1:SetPoint('BOTTOMLEFT', UIParent, 'BOTTOMLEFT', 31, 0)
 
@@ -125,7 +125,7 @@ function CH:UpdatingChatFrame()
 end
 
 function CH.PLAYER_ENTERING_WORLD()
-    CH:UpdatingChatFrame()
+    CH.UpdatingChatFrame()
     CH:BuildToggleButton()
 end
 

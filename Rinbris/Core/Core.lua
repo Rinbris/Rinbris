@@ -41,7 +41,7 @@ function E:CopyTable(current, default)
 
 	if type(default) == 'table' then
 		for option, value in pairs(default) do
-			current[option] = (type(value) == 'table' and E:CopyTable(current[option], value)) or value
+			current[option] = (type(value) == 'table' and self:CopyTable(current[option], value)) or value
 		end
 	end
 
@@ -53,7 +53,7 @@ do
 		return _G.geterrorhandler()(err)
 	end
 
-	function E:CallLoadFunc(func, ...)
+	function E.CallLoadFunc(func, ...)
 		xpcall(func, errorhandler, ...)
 	end
 end
@@ -66,18 +66,18 @@ function E:CallLoadedModule(obj, silent, object, index)
 		name = obj
 	end
 
-	local module = name and E:GetModule(name, silent)
+	local module = name and self:GetModule(name, silent)
 
 	if not module then
 		return
 	end
-	
+
 	if func and type(func) == 'string' then
-		E:CallLoadFunc(module[func], module)
+		self.CallLoadFunc(module[func], module)
 	elseif func and type(func) == 'function' then
-		E:CallLoadFunc(func, module)
+		self.CallLoadFunc(func, module)
 	elseif module.Initialize then
-		E:CallLoadFunc(module.Initialize, module)
+		self.CallLoadFunc(module.Initialize, module)
 	end
 
 	if object and index then
@@ -86,27 +86,27 @@ function E:CallLoadedModule(obj, silent, object, index)
 end
 
 function E:RegisterModule(name, func)
-	if E.initialized then
-		E:CallLoadedModule((func and {name, func}) or name)
+	if self.initialized then
+		self:CallLoadedModule((func and {name, func}) or name)
 	else
-		E.RegisteredModules[#E.RegisteredModules + 1] = (func and {name, func}) or name
+		self.RegisteredModules[#self.RegisteredModules + 1] = (func and {name, func}) or name
 	end
 end
 
 function E:InitializeModules()
-	for index, object in ipairs(E.RegisteredModules) do
-		E:CallLoadedModule(object, true, E.RegisteredModules, index)
+	for index, object in ipairs(self.RegisteredModules) do
+		self:CallLoadedModule(object, true, self.RegisteredModules, index)
 	end
 end
 
-function E:DBConversionsDF()
-end
+-- function E:DBConversionsDF()
+-- end
 
 function E:DBConversions()
     if self.db.dbConverted ~= self.version then
         self.db.dbConverted = self.version
 
-        E:DBConversionsDF()
+        -- self:DBConversionsDF()
     end
 end
 
