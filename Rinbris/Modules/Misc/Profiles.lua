@@ -8,12 +8,14 @@ local type = type
 -- WoW APIs
 local _G = _G
 
-local GetNumAddOns = GetNumAddOns
-local GetAddOnInfo = GetAddOnInfo
-local IsAddOnLoaded = IsAddOnLoaded
-
 local GetNumSpecializations = GetNumSpecializations
 local GetSpecializationInfo = GetSpecializationInfo
+
+local IsAddOnLoaded = IsAddOnLoaded
+local GetNumAddOns = GetNumAddOns
+local GetAddOnInfo = GetAddOnInfo
+
+local UnitLevel = UnitLevel
 
 local specData = {
     [1] = { -- Warrior
@@ -89,9 +91,8 @@ function PR.PLAYER_ENTERING_WORLD()
         if IsAddOnLoaded(i) then
             if (addonName == 'Dominos' or addonName == 'Grid2' ) then
                 local addon = _G[addonName]
-                if type(addon) == "table" and type(addon.db) == "table" and addon.db.GetProfiles then
-                    local current = addon.db:GetCurrentProfile()
-                    if current ~= 'default' then
+                if type(addon) == "table" and type(addon.db) == "table" then
+                    if addon.db:GetCurrentProfile() ~= 'default' then
                         addon.db:SetProfile('default')
                     end
     
@@ -103,7 +104,7 @@ function PR.PLAYER_ENTERING_WORLD()
                 end
             elseif addonName == 'ShadowedUnitFrames' then
                 local addon = _G['ShadowUF']
-                if type(addon) == "table" and type(addon.db) == "table" and addon.db.GetProfiles then
+                if type(addon) == "table" and type(addon.db) == "table" then
                     if UnitLevel('player') > 9 then
                         if not addon.db:IsDualSpecEnabled() then
                             addon.db:SetDualSpecEnabled(true)
@@ -112,16 +113,20 @@ function PR.PLAYER_ENTERING_WORLD()
                         for specIndex = 1, GetNumSpecializations() do                        
                             local desiredProfileName = specData[E.myClassID][GetSpecializationInfo(specIndex)]
                             if desiredProfileName then
-                                local currentDualSpec = addon.db:GetDualSpecProfile(specIndex)
-                                if currentDualSpec ~= desiredProfileName then
+                                if addon.db:GetDualSpecProfile(specIndex) ~= desiredProfileName then
                                     addon.db:SetDualSpecProfile(desiredProfileName, specIndex)
                                 end
                             end
                         end
                     else
-                        local current = addon.db:GetCurrentProfile()
-                        if current ~= 'DPS' then
+                        if addon.db:GetCurrentProfile() ~= 'DPS' then
                             addon.db:SetProfile('DPS')
+                        end
+                    end
+
+                    for _, profileName in pairs(addon.db:GetProfiles()) do
+                        if profileName ~= 'DPS' and profileName ~= 'TANK' and profileName ~= 'HEAL' then
+                            addon.db:DeleteProfile(profileName)
                         end
                     end
                 end
