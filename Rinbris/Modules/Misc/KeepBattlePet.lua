@@ -12,11 +12,6 @@ local InCombatLockdown = InCombatLockdown
 local IsInInstance = IsInInstance
 local IsStealthed = IsStealthed
 
-
-if select(2, IsInInstance()) == 'pvp' then 
-    RepopMe()
-end
-
 function M.PLAYER_STARTED_MOVING()
     if not InCombatLockdown('player') and select(2, IsInInstance()) ~= 'pvp' and not IsStealthed() and C_PetJournal_GetSummonedPetGUID() ~= M.db.companion then
         C_PetJournal_SummonPetByGUID(M.db.companion)
