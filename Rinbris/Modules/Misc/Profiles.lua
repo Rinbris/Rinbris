@@ -3,13 +3,14 @@ local PR = E:GetModule('Profiles')
 
 -- Lua APIs
 local pairs = pairs
-local type = type 
+local type = type
 
 -- WoW APIs
 local _G = _G
 
 local GetNumSpecializations = GetNumSpecializations
 local GetSpecializationInfo = GetSpecializationInfo
+local GetSpecialization = GetSpecialization
 
 local IsAddOnLoaded = IsAddOnLoaded
 local GetNumAddOns = GetNumAddOns
@@ -41,7 +42,7 @@ local specData = {
     [5] = { -- Priest
         [256] = 'HEAL', -- Discipline
         [257] = 'HEAL', -- Holy
-        [259] = 'DPS' -- Shadow
+        [258] = 'DPS' -- Shadow
     },
     [6] = { -- DeathKnight
         [250] = 'DPS', -- Blood
@@ -95,7 +96,7 @@ function PR.PLAYER_ENTERING_WORLD()
                     if addon.db:GetCurrentProfile() ~= 'default' then
                         addon.db:SetProfile('default')
                     end
-    
+
                     for _, profileName in pairs(addon.db:GetProfiles()) do
                         if profileName ~= 'default' then
                             addon.db:DeleteProfile(profileName)
@@ -103,15 +104,16 @@ function PR.PLAYER_ENTERING_WORLD()
                     end
                 end
             elseif addonName == 'ShadowedUnitFrames' then
-                local addon = _G['ShadowUF']
+                local addon = _G['ShadowUF'] -- ShadowUF: They don't use the exact name for the global
                 if type(addon) == "table" and type(addon.db) == "table" then
-                    if UnitLevel('player') > 9 then
+                    if UnitLevel('player') > 9 and GetSpecialization() then
                         if not addon.db:IsDualSpecEnabled() then
                             addon.db:SetDualSpecEnabled(true)
                         end
-                        
-                        for specIndex = 1, GetNumSpecializations() do                        
+
+                        for specIndex = 1, GetNumSpecializations() do
                             local desiredProfileName = specData[E.myClassID][GetSpecializationInfo(specIndex)]
+
                             if desiredProfileName then
                                 if addon.db:GetDualSpecProfile(specIndex) ~= desiredProfileName then
                                     addon.db:SetDualSpecProfile(desiredProfileName, specIndex)
