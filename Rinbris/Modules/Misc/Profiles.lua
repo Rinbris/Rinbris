@@ -106,7 +106,7 @@ function PR.PLAYER_ENTERING_WORLD()
             elseif addonName == 'ShadowedUnitFrames' then
                 local addon = _G['ShadowUF'] -- ShadowUF: They don't use the exact name for the global
                 if type(addon) == "table" and type(addon.db) == "table" then
-                    if UnitLevel('player') > 9 and GetSpecialization() then
+                    if UnitLevel('player') > 9 and GetSpecialization() ~= 5 then
                         if not addon.db:IsDualSpecEnabled() then
                             addon.db:SetDualSpecEnabled(true)
                         end
@@ -121,6 +121,10 @@ function PR.PLAYER_ENTERING_WORLD()
                             end
                         end
                     else
+                        if addon.db:IsDualSpecEnabled() then
+                            addon.db:SetDualSpecEnabled(false)
+                        end
+
                         if addon.db:GetCurrentProfile() ~= 'DPS' then
                             addon.db:SetProfile('DPS')
                         end

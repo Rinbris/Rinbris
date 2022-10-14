@@ -87,9 +87,6 @@ function CH:BuildToggleButton()
 end
 
 function CH.UpdatingChatFrame()
-    ChatFrame1:ClearAllPoints()
-    ChatFrame1:SetPoint('BOTTOMLEFT', UIParent, 'BOTTOMLEFT', 31, 0)
-
     for i = 1, 50 do
         local chatFrame = _G['ChatFrame' .. i]
         if chatFrame then
@@ -103,6 +100,9 @@ function CH.UpdatingChatFrame()
             end)
         end
     end
+
+    ChatFrame1:ClearAllPoints()
+    ChatFrame1:SetPoint('BOTTOMLEFT', UIParent, 'BOTTOMLEFT', 31, 0)
 
     ChatFrameMenuButton:Hide()
 
