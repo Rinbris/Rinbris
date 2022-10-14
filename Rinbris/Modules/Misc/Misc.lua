@@ -163,6 +163,18 @@ function M.MuteUselessSound()
     end
 end
 
+function M.HideTotalRP()
+    for _, s in pairs(blacklistSound) do
+        MuteSoundFile(s)
+    end
+end
+
+function M.PLAYER_ENTERING_WORLD()
+    if IsAddOnLoaded('totalRP3') and TRP3_API then
+        TRP3_API.toolbar.switch()
+    end
+end
+
 function M:Initialize()
     if not E.private.misc.enable then
         return
@@ -177,6 +189,8 @@ function M:Initialize()
     self:LoadAutoRepair()
     self:LoadKeepBattlePet()
     self:LoadLoot()
+
+    self:RegisterEvent('PLAYER_ENTERING_WORLD')
 
     self.Initialized = true
 end

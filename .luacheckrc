@@ -24,6 +24,8 @@ globals = {
     "RinbrisCharacterDB",
 
     -- Third Party Addons/Libs
+    "TRP3_ToolbarTopFrame",
+    "TRP3_API",
 
     -- FrameXML frames
     "UIParent",
