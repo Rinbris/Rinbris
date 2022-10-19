@@ -169,6 +169,10 @@ function M.HideTotalRP()
     end
 end
 
+--[[ TODO:TRP3_API.toolbar.switch() toggle.
+    The function used is a toggle. The frame is
+    a local variable, so I need to find a workaround.
+--]]
 function M.PLAYER_ENTERING_WORLD()
     if IsAddOnLoaded('totalRP3') and TRP3_API then
         TRP3_API.toolbar.switch()
