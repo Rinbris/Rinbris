@@ -2,6 +2,7 @@ local E = unpack(Rinbris)
 local B = E:GetModule('Blizzard')
 
 -- WoW APIs
+local IsModifierKeyDown = IsModifierKeyDown
 local hooksecurefunc = hooksecurefunc
 
 function B.PLAYER_REGEN_ENABLED()
@@ -9,9 +10,13 @@ function B.PLAYER_REGEN_ENABLED()
 end
 
 function B.PLAYER_REGEN_DISABLED()
-    GameTooltip:SetScript('OnShow', GameTooltip.Hide)
+    GameTooltip:SetScript('OnShow', function()
+        if not IsModifierKeyDown() then
+            GameTooltip:Hide()
+        end
+    end)
 
-    if GameTooltip:IsShown() then
+    if GameTooltip:IsShown() and not IsModifierKeyDown() then
         GameTooltip:Hide()
     end
 end
