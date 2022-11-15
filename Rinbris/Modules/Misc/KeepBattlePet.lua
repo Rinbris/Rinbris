@@ -13,8 +13,8 @@ local IsInInstance = IsInInstance
 local IsStealthed = IsStealthed
 
 function M.PLAYER_STARTED_MOVING()
-    local battlePet = RinbrisCharacterDB.battlePet or M.db.companion
-    if not InCombatLockdown('player') and select(2, IsInInstance()) ~= 'pvp' and not IsStealthed() and C_PetJournal_GetSummonedPetGUID() ~= battlePet then
+    local battlePet = RinbrisCharacterDB.battlePet
+    if battlePet and not InCombatLockdown('player') and select(2, IsInInstance()) ~= 'pvp' and not IsStealthed() and C_PetJournal_GetSummonedPetGUID() ~= battlePet then
         C_PetJournal_SummonPetByGUID(battlePet)
     end
 end
