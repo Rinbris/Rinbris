@@ -26,6 +26,10 @@ globals = {
     -- Third Party Addons/Libs
     "TRP3_ToolbarTopFrame",
     "TRP3_API",
+    "Storyline_NPCFrameConfigButton",
+    "Storyline_NPCFrameLock",
+    "Storyline_NPCFrameClose",
+    "Storyline_NPCFrameResizeButton",
 
     -- FrameXML frames
     "UIParent",
@@ -38,6 +42,8 @@ globals = {
     "QuickJoinToastButton",
     "ChatFrameChannelButton",
     "GeneralDockManager",
+    "StatusTrackingBarManager",
+    "MinimapCluster",
 
     -- FrameXML globals
     "DEFAULT_CHATFRAME_ALPHA",
@@ -77,6 +83,7 @@ globals = {
     "IsShiftKeyDown",
     "IsStealthed",
     "IsInGuild",
+    "IsModifierKeyDown",
 
     "InCombatLockdown",
 

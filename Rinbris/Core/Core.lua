@@ -3,9 +3,8 @@ Rinbris[2] = Rinbris[1].Libs.ACL:GetLocale('Rinbris', GetLocale())
 local E = unpack(Rinbris)
 
 -- Lua APIs
-local strsplit, strjoin = strsplit, strjoin
+local strjoin = strjoin
 local ipairs, pairs = ipairs, pairs
-local tonumber = tonumber
 local format = format
 local xpcall = xpcall
 local select = select
