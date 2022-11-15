@@ -169,13 +169,16 @@ function M.HideTotalRP()
     end
 end
 
---[[ TODO:TRP3_API.toolbar.switch() toggle.
-    The function used is a toggle. The frame is
-    a local variable, so I need to find a workaround.
---]]
 function M.PLAYER_ENTERING_WORLD()
-    if IsAddOnLoaded('totalRP3') and TRP3_API then
-        TRP3_API.toolbar.switch()
+    if IsAddOnLoaded('Storyline') then
+        Storyline_NPCFrameClose:Hide()
+        Storyline_NPCFrameClose:UnregisterAllEvents()
+        Storyline_NPCFrameLock:Hide()
+        Storyline_NPCFrameLock:UnregisterAllEvents()
+        Storyline_NPCFrameConfigButton:Hide()
+        Storyline_NPCFrameConfigButton:UnregisterAllEvents()
+        Storyline_NPCFrameResizeButton:Hide()
+        Storyline_NPCFrameResizeButton:UnregisterAllEvents()
     end
 end
 
@@ -192,7 +195,6 @@ function M:Initialize()
     self:LoadAutoRelease()
     self:LoadAutoRepair()
     self:LoadKeepBattlePet()
-    self:LoadLoot()
 
     self:RegisterEvent('PLAYER_ENTERING_WORLD')
 
