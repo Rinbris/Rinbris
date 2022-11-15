@@ -6,8 +6,6 @@
 ## SavedVariables: RinbrisDB, RinbrisDBPrivateDB
 ## SavedVariablesPerCharacter: RinbrisCharacterDB
 
-Libraries\TaintLess\TaintLess.xml
-
 Libraries\Ace3\LibStub\LibStub.lua
 Libraries\Ace3\CallbackHandler-1.0\CallbackHandler-1.0.lua
 Libraries\Ace3\AceAddon-3.0\AceAddon-3.0.xml
@@ -32,16 +30,15 @@ Core\Core.lua
 Core\Commands.lua
 Core\SharedMedia.lua
 
-Modules\Chat\Chat.lua
-
 Modules\Blizzard\Blizzard.lua
+Modules\Blizzard\Minimap.lua
 Modules\Blizzard\GameTooltip.lua
 Modules\Blizzard\ObjectiveTracker.lua
+Modules\Blizzard\StatusTrackingBar.lua
 
 Modules\Misc\Misc.lua
 Modules\Misc\AutoRelease.lua
 Modules\Misc\AutoRepair.lua
 Modules\Misc\AutoSell.lua
 Modules\Misc\KeepBattlePet.lua
-Modules\Misc\Loot.lua
 Modules\Misc\Profiles.lua
