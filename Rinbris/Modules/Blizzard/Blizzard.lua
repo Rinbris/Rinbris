@@ -10,6 +10,8 @@ function B:Initialize()
 
     self:UpdateObjectiveTracker()
     self:UpdateGameTooltip()
+    self:StatusTrackingBar()
+    self:UpdateMinimap()
 
     self.Initialized = true
 end
