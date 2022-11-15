@@ -90,7 +90,7 @@ function PR.PLAYER_ENTERING_WORLD()
         local addonName = GetAddOnInfo(i)
 
         if IsAddOnLoaded(i) then
-            if (addonName == 'Dominos' or addonName == 'Grid2' ) then
+            if (addonName == 'Bartender4' or addonName == 'Grid2' or addonName == 'NameplateCooldowns') then
                 local addon = _G[addonName]
                 if type(addon) == "table" and type(addon.db) == "table" then
                     if addon.db:GetCurrentProfile() ~= 'default' then
