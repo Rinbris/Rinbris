@@ -21,8 +21,6 @@ Engine[4] = E.DF.profile          -- P, ProfileDB
 Engine[5] = E.DF.global           -- G, GlobalDB
 _G[addonName] = Engine
 
-E.AutoRepair = E:NewModule('AutoRepair','AceEvent-3.0')
-E.AutoSell = E:NewModule('AutoSell','AceEvent-3.0')
 E.Blizzard = E:NewModule('Blizzard','AceEvent-3.0')
 E.Profiles = E:NewModule('Profiles','AceEvent-3.0')
 E.Misc = E:NewModule('Misc','AceEvent-3.0')

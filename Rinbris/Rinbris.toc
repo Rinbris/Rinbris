@@ -38,7 +38,5 @@ Modules\Blizzard\StatusTrackingBar.lua
 
 Modules\Misc\Misc.lua
 Modules\Misc\AutoRelease.lua
-Modules\Misc\AutoRepair.lua
-Modules\Misc\AutoSell.lua
 Modules\Misc\KeepBattlePet.lua
 Modules\Misc\Profiles.lua
